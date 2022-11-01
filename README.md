@@ -12,13 +12,18 @@ Soon TM lol
 
 ## Usage
 
+This shorts example reads the exported json and prints all relations 
+with the referenced elements.
+
 ```rust
 use overpass_turbo::{OverpassTurbo, simplified};
 
 fn main() {
+    // first reads file contents and then simplifies them
     let mut file = OverpassTurbo::from_file("./tramdata.json").unwrap();
     let mut simplified = simplified::SimplifiedOverpassTurbo::from_struct(file);
 
+    // removes all nodes and ways 
     simplified.prune_nodes();
     simplified.prune_ways();
 
